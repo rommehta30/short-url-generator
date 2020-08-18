@@ -12,7 +12,7 @@ class ShortUrlsController < ApplicationController
   end
 
   def create
-    short_url = ShortUrl.new(full_url: short_url_params[:full_url])
+    short_url = ShortUrl.find_or_initialize_by(full_url: short_url_params[:full_url])
     short_url.short_code = short_url.short_code
     short_url.save!
     render json: { short_code: short_url.short_code }

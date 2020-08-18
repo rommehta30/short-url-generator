@@ -27,3 +27,11 @@
 # Checking your short URL redirect
 
     curl -I localhost:3000/abc
+
+# Algorithm Used
+
+1. Iterating over last short code in reverse order
+2. If currenct character is not the last one then replacing it with next character and keeping the remaining charactes as it is
+3. If current character is last one then replacing it with first character and checking the previous character
+4. If first character is last one that means combination limit has reached and thus increasing the length by one
+

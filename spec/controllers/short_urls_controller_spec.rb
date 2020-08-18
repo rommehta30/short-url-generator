@@ -41,6 +41,12 @@ RSpec.describe ShortUrlsController, type: :controller do
       expect(parsed_response['errors']).to be_include("Full url is not a valid url")
     end
 
+    it "does not create a short_url and return the existing short code if already exists" do
+      ShortUrl.create(full_url: "https://www.google.com", short_code: "test", title: "Rspec")
+
+      post :create, params: { full_url: "https://www.google.com" }, format: :json
+      expect(parsed_response['short_code']).to eq("test")
+    end
   end
 
   describe "show" do

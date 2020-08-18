@@ -31,6 +31,19 @@ RSpec.describe ShortUrl, type: :model do
       expect(short_url.short_code).to be_nil
     end
 
+    it "returns the next short_code" do
+      short_url.full_url = "https://www.google.com"
+
+      last_short_url = ShortUrl.create(full_url: "https://www.beenverified.com/faq/", short_code: "0")
+      expect(short_url.short_code).to eq "1"
+
+      last_short_url.update short_code: "Z"
+      expect(short_url.short_code).to eq "00"
+
+      last_short_url.update short_code: "1Z"
+      expect(short_url.short_code).to eq "20"
+    end
+
   end
 
   describe "existing short_url instance" do
