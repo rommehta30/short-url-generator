@@ -31,7 +31,6 @@
 # Algorithm Used
 
 1. Iterating over last short code in reverse order
-2. If currenct character is not the last one then replacing it with next character and keeping the remaining charactes as it is
-3. If current character is last one then replacing it with first character and checking the previous character
-4. If first character is last one that means combination limit has reached and thus increasing the length by one
-
+2. If current character is not the last one then replacing it with next character from characters array and keeping the remaining characters as it is
+3. If current character is last character from the characters array then replacing it with first character of characters array and checking the previous character
+4. If first character of the last short code is last character of the characters array that means combination limit has reached and thus increasing the length by one
